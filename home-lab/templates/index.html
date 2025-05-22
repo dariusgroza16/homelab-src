@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Darius' Homelab</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>🖥️ Darius' Homelab</h1>
+        <p>Monitoring, Automation, and DevOps — all at home.</p>
+    </header>
+
+    <main>
+        <section class="card animate-fade-in">
+            <h2>Kubernetes Cluster</h2>
+            <p>5-node k3s cluster with Ansible deployment and Prometheus monitoring.</p>
+        </section>
+
+        <section class="card animate-slide-up">
+            <h2>CI/CD Pipeline</h2>
+            <p>GitHub → Docker Hub → Live VM redeploys. Fully automated.</p>
+        </section>
+
+        <section class="card animate-float">
+            <h2>Services Hosted</h2>
+            <ul>
+                <li>Grafana</li>
+                <li>Node-RED</li>
+                <li>Internal Docker registry</li>
+                <li>Personal site (this one!)</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2025 Darius Groza | Homelab Nerding</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,7 @@
+services:
+  homelab-fe:
+    image: dariusmurk/homelab-fe:latest
+    container_name: homelab-fe
+    ports:
+      - "3000:3000"
+    restart: unless-stopped
