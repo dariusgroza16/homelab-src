@@ -1,0 +1,19 @@
+name: Deploy on self-hosted runner
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+
+    steps:
+      - name: Pull latest image from Docker Hub
+        run: docker pull yourdockerhubusername/homelab-site:latest
+
+      - name: Redeploy container
+        run: |
+          cd /home/dariusmurk/repos/homelab
+          docker compose down
+          docker compose up -d
