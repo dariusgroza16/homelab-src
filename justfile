@@ -3,7 +3,7 @@ set quiet := true
 set shell := ["bash","-cu"]
 
 this_dir := justfile_directory()
-image_name := "dariusmurk/homelab-fe"
+image_name := "dariusgroza16/homelab-fe"
 
 _default:
    just --list
@@ -17,6 +17,10 @@ build:
 bv version:
   docker image rm -f $image_name:$version
   docker build -f $this_dir/Dockerfile -t $image_name:$version .
+
+[doc("push homelab image with version tag")]
+pv version:
+  docker push $image_name:$version
 
 [doc("run homelab container with latest tag")]
 run:

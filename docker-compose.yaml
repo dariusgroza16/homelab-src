@@ -1,6 +1,6 @@
 services:
   homelab-fe:
-    image: dariusmurk/homelab-fe:latest
+    image: dariusgroza16/homelab-fe:latest
     container_name: homelab-fe
     ports:
       - "3000:3000"
