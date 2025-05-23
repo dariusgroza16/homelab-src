@@ -12,10 +12,10 @@ jobs:
       - name: Pull image with latest tag
         run: |
           cd /home/dariusmurk/repos/homelab
-          docker pull ${{ vars.FRONTEND_IMAGE_NAME }}:latest
+          docker pull ${{ vars.FRONTEND_IMAGE_NAME }}:1.0
 
       - name: Run container with latest tag
         run: |
           pwd
-          docker run -d -p 3000:3000 --name 'homelab-fe' ${{ vars.FRONTEND_IMAGE_NAME }}:latest
+          docker run -d -p 3000:3000 --name 'homelab-fe' ${{ vars.FRONTEND_IMAGE_NAME }}:1.0
        
