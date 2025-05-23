@@ -9,11 +9,13 @@ jobs:
     runs-on: self-hosted
 
     steps:
-      - name: Run just file
-        run: cd /home/dariusmurk/repos/homelab && just run
+      - name: Pull image with latest tag
+        run: |
+          cd /home/dariusmurk/repos/homelab
+          docker ${{ vars.FRONTEND_IMAGE_NAME }}:latest
 
-      # - name: Redeploy container
-      #   run: |
-      #     cd /home/dariusmurk/repos/homelab
-      #     docker compose down
-      #     docker compose up -d
+      - name: Run container with latest tag
+        run: |
+          pwd
+          docker run -d -p 3000:3000 --name 'homelab-fe' ${{ vars.FRONTEND_IMAGE_NAME }}:latest
+       
