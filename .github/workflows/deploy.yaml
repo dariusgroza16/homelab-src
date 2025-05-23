@@ -12,7 +12,7 @@ jobs:
       - name: Pull image with latest tag
         run: |
           cd /home/dariusmurk/repos/homelab
-          docker ${{ vars.FRONTEND_IMAGE_NAME }}:latest
+          docker pull {{ vars.FRONTEND_IMAGE_NAME }}:latest
 
       - name: Run container with latest tag
         run: |
