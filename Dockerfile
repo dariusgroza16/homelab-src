@@ -13,6 +13,7 @@ COPY  requirements.txt requirements.txt
 RUN pip3 install --no-cache-dir -r requirements.txt
 
 COPY ./home-lab /home-lab
+COPY VERSION /VERSION
 
 EXPOSE 3000
 
