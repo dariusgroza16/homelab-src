@@ -2,7 +2,7 @@ name: Deploy on self-hosted runner
 
 on:
   push:
-    branches: [main]
+    branches: [testing]
 
 jobs:
   deploy:
@@ -12,10 +12,10 @@ jobs:
       - name: Pull image with latest tag
         run: |
           cd /home/dariusmurk/repos/homelab
-          docker pull ${{ vars.FRONTEND_IMAGE_NAME }}:1.0
+          docker pull ${{ vars.FRONTEND_IMAGE_NAME }}:latest
 
       - name: Run container with latest tag
         run: |
           pwd
-          docker run -d -p 3000:3000 --name 'homelab-fe' ${{ vars.FRONTEND_IMAGE_NAME }}:1.0
+          docker run -d -p 3000:3000 --name 'homelab-fe' ${{ vars.FRONTEND_IMAGE_NAME }}:latest
        
