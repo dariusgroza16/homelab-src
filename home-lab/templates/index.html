@@ -2,40 +2,96 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Darius' Homelab</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <header>
-        <h1>Darius' Homelab</h1>
-        <p>Monitoring, Automation, and DevOps — all at home.</p>
-    </header>
+    <nav class="topbar">
+        <div class="brand">
+            <img src="{{ url_for('static', filename='img/lgs.png') }}" alt="LGS logo" class="anvil">
+            <p class="subtitle">Monitoring, Automation, and DevOps — all at home.</p>
+        </div>
+        <div class="actions">
+            <button id="theme-toggle" aria-label="Toggle theme">🌙</button>
+        </div>
+    </nav>
 
     <main>
-        <section class="card animate-fade-in">
-            <h2>Kubernetes Cluster</h2>
-            <p>5-node k3s cluster with Ansible deployment and Prometheus monitoring.</p>
+        <section class="hero">
+            <div class="hero-inner">
+                <h2>Home infrastructure, done with care</h2>
+                <p>I'm Darius — I run home clusters, automation and observability tooling. This site showcases my projects and hosted services.</p>
+                <div class="hero-ctas" role="tablist">
+                    <button class="btn tab-button" data-tab="explore">Explore</button>
+                    <button class="btn ghost tab-button" data-tab="about">About</button>
+                    <button class="btn ghost tab-button" data-tab="k3s">Discover K3sForge</button>
+                    <div id="tab-slider" class="tab-slider" aria-hidden="true"></div>
+                </div>
+            </div>
+            <canvas id="bg-canvas" aria-hidden="true"></canvas>
         </section>
 
-        <section class="card animate-slide-up">
-            <h2>CI/CD Pipeline</h2>
-            <p>GitHub → Docker Hub → Live VM redeploys. Fully automated.</p>
-        </section>
+        <section id="tabbed-content">
+            <div class="tab-panel" data-tab="explore">
+                <div class="cards-grid">
+                    <article class="card reveal" data-title="K3sForge">
+                        <h3>K3sForge</h3>
+                        <p>K3sForge automates provisioning of k3s clusters at home. It handles node bootstrapping, networking, join tokens and opinionated defaults for home labs.</p>
+                        <p>Use K3sForge to spin up reproducible, lightweight Kubernetes clusters across your devices.</p>
+                    </article>
 
-        <section class="card animate-float">
-            <h2>Services Hosted</h2>
-            <ul>
-                <li>Grafana</li>
-                <li>Node-RED</li>
-                <li>Internal Docker registry</li>
-                <li>Personal site (this one!)</li>
-            </ul>
+                    <article class="card reveal" data-title="Kubernetes Cluster">
+                        <h3>Kubernetes Cluster</h3>
+                        <p>5-node k3s cluster with Ansible deployment and Prometheus monitoring.</p>
+                    </article>
+
+                    <article class="card reveal" data-title="CI/CD Pipeline">
+                        <h3>CI/CD Pipeline</h3>
+                        <p>GitHub → Docker Hub → Live VM redeploys. Fully automated.</p>
+                    </article>
+
+                    <article class="card reveal" data-title="Services Hosted">
+                        <h3>Services Hosted</h3>
+                        <ul>
+                            <li>Grafana</li>
+                            <li>Node-RED</li>
+                            <li>Internal Docker registry</li>
+                            <li>Personal site (this one!)</li>
+                        </ul>
+                    </article>
+                </div>
+            </div>
+
+            <div class="tab-panel" data-tab="about" hidden>
+                <div class="panel-inner">
+                    <h3>About Darius & the Homelab</h3>
+                    <p>I'm Darius — I run home clusters, automation and observability tooling. I experiment with reliable, repeatable infrastructure for small-scale environments.</p>
+                    <p>This site documents my projects, automation, and the services I host for learning and utility.</p>
+                </div>
+            </div>
+
+            <div class="tab-panel" data-tab="k3s" hidden>
+                <div class="panel-inner">
+                    <h3>Discover K3sForge</h3>
+                    <p><strong>K3sForge</strong> automates k3s cluster provisioning: opinionated defaults, bootstrapping, token management and simple lifecycle commands for homelab usage.</p>
+                    <p>It integrates with local provisioning (SSH/Ansible) and offers quick tear-down and rebuild for iterative testing.</p>
+                </div>
+            </div>
         </section>
     </main>
 
     <footer>
         <p>© 2025 Darius Groza | Homelab Nerding</p>
     </footer>
+
+    <div id="modal" class="modal" aria-hidden="true">
+        <div class="modal-panel">
+            <button id="modal-close" class="modal-close" aria-label="Close">✕</button>
+            <h3 id="modal-title"></h3>
+            <div id="modal-body"></div>
+        </div>
+    </div>
 
     <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
